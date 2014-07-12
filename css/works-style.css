@@ -1,0 +1,331 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  position: absolute;
+  line-height: 1;
+  font: 500 0.875em/1.7 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+ol,
+ul {
+  list-style: none;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+a {
+  color: white;
+}
+#main-nav {
+  mmargin-bottom: 33px;
+  height: 118px;
+  background-color: #2e2e2e;
+  overflow: hidden;
+}
+#main-nav div.nav-wrap {
+  margin: 20px auto;
+  width: 542px;
+}
+#main-nav ul.bd {
+  margin-right: -17px;
+  overflow: visible;
+}
+#main-nav ul.bd li {
+  position: relative;
+  float: left;
+  margin-right: 17px;
+  cursor: pointer;
+}
+#main-nav ul.bd div.circle {
+  float: left;
+  height: 70px;
+  width: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+#main-nav ul.bd div.hover-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 70px;
+  width: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  background-image: url('../img/hover_black_nav.png');
+  opacity: .5;
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity .1s linear;
+  -moz-transition: opacity .1s linear;
+  -ms-transition: opacity .1s linear;
+  -o-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+}
+#main-nav ul.bd li:hover div.hover-wrap {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#main-nav ul.bd .title {
+  display: none;
+  overflow: hidden;
+  margin-top: 25px;
+  padding-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+}
+#main-nav ul.bd .title p {
+  height: 1.5em;
+  line-height: 1.5em;
+}
+#main-nav ul.bd li.now .title {
+  display: block;
+}
+#main-nav ul.bd li.now .hover-wrap {
+  background-color: rgba(0, 0, 0, 0);
+}
+#main-nav ul.bd .circle1 {
+  background: url("../img/group_nav.png") no-repeat 0 0;
+}
+#main-nav ul.bd .circle2 {
+  background: url("../img/group_nav.png") no-repeat -70px 0;
+}
+#main-nav ul.bd .circle3 {
+  background: url("../img/group_nav.png") no-repeat -140px 0;
+}
+#main-nav ul.bd .circle4 {
+  background: url("../img/group_nav.png") no-repeat -210px 0;
+}
+#main-nav ul.bd .circle5 {
+  background: url("../img/group_nav.png") no-repeat -280px 0;
+}
+body {
+  position: relative;
+  background-image: url("../img/works_bg.png");
+  background-repeat: repeat;
+  overflow-x: hidden;
+}
+#slide_wrap {
+  position: absolute;
+  top: 200px;
+}
+#slide_wrap .slide_item {
+  float: left;
+  margin-right: 160px;
+  width: 604px;
+  text-align: center;
+}
+#slide_wrap .slide_item a {
+  text-decoration: none;
+}
+#slide_wrap .slide_item:hover .app_name {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+#slide_wrap .mac {
+  position: relative;
+  margin-right: 165px;
+  width: 604px;
+  height: 405px;
+  background: url("../img/mac_nosel.png") no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background 50ms linear;
+  -moz-transition: background .1s linear;
+  -ms-transition: background .1s linear;
+  -o-transition: background .1s linear;
+  transition: background 50ms linear;
+}
+#slide_wrap .mac img {
+  margin-top: 21px;
+  width: 466px;
+  height: 291px;
+}
+#slide_wrap .mac:hover {
+  background-image: url("../img/mac_nobg.png");
+}
+#slide_wrap .img_wrap {
+  position: absolute;
+  background-color: #000;
+  left: 70px;
+  top: 21px;
+  width: 466px;
+  height: 291px;
+  opacity: .5;
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity .1s linear;
+  -moz-transition: opacity .1s linear;
+  -ms-transition: opacity .1s linear;
+  -o-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+}
+#slide_wrap .mac:hover .img_wrap {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#slide_wrap .slide_item.light .mac {
+  background-image: url("../img/mac_nobg.png");
+}
+#slide_wrap .slide_item.light .mac .img_wrap {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#slide_wrap .app_logo {
+  margin-top: -15px;
+}
+#slide_wrap .app_name {
+  position: relative;
+  margin: 0 auto;
+  height: 44px;
+  max-width: 160px;
+  color: white;
+  text-align: center;
+  background-color: #000;
+  -webkit-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -ms-transition: all .5s linear;
+  -o-transition: all .5s linear;
+  transition: all .5s linear;
+  font: 500 24px/44px Microsoft Jhenghei, '华文细黑', Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+#slide_wrap .app_name::before,
+#slide_wrap .app_name::after {
+  content: ' ';
+  position: absolute;
+  background-image: url("../img/works_name.png");
+  background-repeat: no-repeat;
+  height: 44px;
+  width: 35px;
+}
+#slide_wrap .app_name::before {
+  left: -35px;
+  background-position: 0 0;
+}
+#slide_wrap .app_name::after {
+  left: 100%;
+  background-position: -132px 0;
+}
+#slide_wrap .app_des {
+  margin: 14px auto 46px;
+  width: 348px;
+  font: 500 8px/15px '华文细黑', Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  color: #858585;
+  text-align: center;
+}

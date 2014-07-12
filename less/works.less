@@ -1,0 +1,115 @@
+body{
+  position: relative;
+  background-image: url("../img/works_bg.png");
+  background-repeat: repeat;
+  overflow-x: hidden;
+}
+#slide_wrap{
+  position:absolute;
+  top: 200px;
+  .slide_item{
+    float: left;
+    margin-right:160px;
+    width: 604px;
+    text-align: center;
+    a{
+      text-decoration: none;
+    }
+    &:hover .app_name{
+      -webkit-transform: rotateY(360deg);
+      -moz-transform: rotateY(360deg);
+      -ms-transform: rotateY(360deg);
+      -o-transform: rotateY(360deg);
+      transform: rotateY(360deg);
+    }
+  }
+  .mac{
+    position: relative;
+    margin-right: 165px;
+    width: 604px;
+    height: 405px;
+    background: url("../img/mac_nosel.png") no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: background 50ms linear;
+    -moz-transition: background .1s linear;
+    -ms-transition: background .1s linear;
+    -o-transition: background .1s linear;
+    transition: background 50ms linear;
+    img{
+      margin-top: 21px;
+      width: 466px;
+      height: 291px;
+    }
+  }
+  .mac:hover{
+    background-image: url("../img/mac_nobg.png");
+  }
+  .img_wrap{
+    position: absolute;
+    background-color: #000;
+    left:70px;
+    top: 21px;
+    width: 466px;
+    height: 291px;
+    opacity: .5;
+    filter:alpha(opacity=50);
+    -webkit-transition: opacity .1s linear;
+    -moz-transition: opacity .1s linear;
+    -ms-transition: opacity .1s linear;
+    -o-transition: opacity .1s linear;
+    transition: opacity .1s linear;
+  }
+  .mac:hover .img_wrap{
+    opacity: 0;
+    filter:alpha(opacity=0);
+  }
+  .slide_item.light .mac{
+    background-image: url("../img/mac_nobg.png");
+    .img_wrap{
+      opacity: 0;
+      filter:alpha(opacity=0);
+    }
+  }
+  .app_logo{
+    margin-top: -15px;
+  }
+  .app_name{
+    position: relative;
+    margin: 0 auto;;
+    height: 44px;
+    max-width: 160px;
+    color:white;
+    text-align: center;
+    background-color: #000;
+    -webkit-transition: all .5s linear;
+    -moz-transition: all .5s linear;
+    -ms-transition: all .5s linear;
+    -o-transition: all .5s linear;
+    transition: all .5s linear;
+    font:500 24px/44px Microsoft Jhenghei,'华文细黑',Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  }
+  .app_name::before,.app_name::after{
+    content:' ';
+    position: absolute;
+    background-image: url("../img/works_name.png");
+    background-repeat: no-repeat;
+    height:44px;
+    width: 35px;
+  }
+  .app_name::before{
+    left: -35px;
+    background-position: 0 0;
+  }
+  .app_name::after{
+    left: 100%;
+    background-position: -132px 0;
+  }
+  .app_des{
+    margin:14px auto 46px;
+    width: 348px;
+    font:500 8px/15px '华文细黑',Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    color:#858585;
+    text-align: center;
+  }
+}
