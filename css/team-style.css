@@ -130,7 +130,7 @@ a {
 }
 #main-nav {
   mmargin-bottom: 33px;
-  height: 118px;
+  height: 100px;
   background-color: #2e2e2e;
   overflow: hidden;
 }
@@ -243,18 +243,28 @@ body {
   height: auto;
 }
 #slide-button {
+  position: relative;
   width: 100%;
   height: 60px;
   background-color: #292929;
+  overflow: hidden;
+}
+span.line-through {
+  position: absolute;
+  top: 11px;
+  width: 370px;
+  height: 1px;
+  background-color: #ffffff;
+  vertical-align: middle;
 }
 #button-list {
+  position: relative;
   height: 10px;
   margin: 25px auto 0;
   padding: 0 10px;
   width: 380px;
   text-align: justify;
   text-justify: distribute-all-lines;
-  text-decoration: line-through;
   color: #fff;
 }
 #button-list .button-item {
@@ -304,6 +314,7 @@ body {
   overflow: hidden;
 }
 .slideOutLeft {
+  z-index: 0;
   -moz-animation: slideOutLeft 1s;
   -ms-animation: slideOutLeft 1s;
   -o-animation: slideOutLeft 1s;
@@ -315,6 +326,7 @@ body {
   animation-fill-mode: forwards;
 }
 .slideInRight {
+  z-index: 1;
   -moz-animation: slideInRight 1s;
   -ms-animation: slideInRight 1s;
   -o-animation: slideInRight 1s;

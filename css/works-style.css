@@ -130,7 +130,7 @@ a {
 }
 #main-nav {
   mmargin-bottom: 33px;
-  height: 118px;
+  height: 100px;
   background-color: #2e2e2e;
   overflow: hidden;
 }
@@ -218,6 +218,8 @@ body {
   background-image: url("../img/works_bg.png");
   background-repeat: repeat;
   overflow-x: hidden;
+  min-height: 800px;
+  overflow-y: visible;
 }
 #slide_wrap {
   position: absolute;
@@ -325,7 +327,7 @@ body {
 #slide_wrap .app_des {
   margin: 14px auto 46px;
   width: 348px;
-  font: 500 8px/15px '华文细黑', Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  font: 500 12px/15px '华文细黑', Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
   color: #858585;
   text-align: center;
 }

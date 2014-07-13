@@ -1,9 +1,10 @@
 ul.circle_group{
-  .center(75px);
+  .center(25px);
   width: 1173px;
 }
 li.circle_item{
   float: left;
+  position: relative;
   margin-right: 22px;
   width: 217px;
   height: 217px;
@@ -29,6 +30,9 @@ li.item5{
   .group_bg(-868px,0);
 }
 div.circle_cover{
+  position: absolute;
+  left: 0;
+  top: 0;
   opacity:0;
   filter:alpha(opacity=0);
   width: 217px;
@@ -131,4 +135,24 @@ div.circle_cover{
     -moz-transform:scale(.95);
     opacity: 1;
   }
+
+}
+.name_en,.name_ch{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+
+  letter-spacing: 2px;
+
+}
+.name_en{
+  top: 70px;
+  font-family:Arial,sans-serif;
+}
+.name_ch{
+  top:120px;
+  font-family: '黑体','MICROSOFT YAHEI';
+
 }

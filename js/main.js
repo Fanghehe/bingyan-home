@@ -1,13 +1,13 @@
 /**
  * Created by fang on 14-6-3.
- */
+     */
 $(function(){
     var wW = $(window).width();//获取屏幕宽和高
     var wH = $(window).height();
-    var bH = $('body').height(),dH = $('div.index_down').height();//获取body高度
-    $('#index_wrap').height(dH);//撑开页面高度，让动画更加流畅
-    $('html').height(bH+dH);
-    $('body').height(bH);
+//    var bH = $('body').height(),dH = $('div.index_down').height();//获取body高度
+    //$('#index_wrap').height(dH);//撑开页面高度，让动画更加流畅
+//    $('html').height(bH+dH);
+//    $('body').height(bH);
     $(window).resize(function(){
         wW = $(window).width();//获取屏幕宽和高
         wH = $(window).height();
@@ -32,7 +32,7 @@ $(function(){
     }
     var indexBg = new BG($('body'),1200,912);
     var indexBg1 = new BG($('.bg1'),1300,813);
-    var indexBg2 = new BG($('.bg2'),670,440);
+    var indexBg2 = new BG($('.bg2'),1300,863);
     var indexBg3 = new BG($('.bg3'),1300,866);
     var indexBg4 = new BG($('.bg4'),1300,863);
     var indexBg5 = new BG($('.bg5'),1288,638);
@@ -40,6 +40,8 @@ $(function(){
         this.elem = elem;
         this.src = src;
         this.circle = circle;
+        this.circle_cover = this.circle.find('.circle_cover');
+        this.name = this.circle.find('.name');
         this.loadImg = function(){//图片预加载
             var img = new Image();
             var that = this;
@@ -53,11 +55,13 @@ $(function(){
         this.bind = function(){
             var that = this;
             this.circle.bind('mouseenter',function(e){
-                $(this).find('.circle_cover').addClass('hover').removeClass('leave');
+                that.circle_cover.addClass('hover').removeClass('leave');
+                that.name.hide();
                 that.elem.fadeIn(600);
             });
             this.circle.bind('mouseleave',function(e){
-                $(this).find('.circle_cover').removeClass('hover').addClass('leave');
+                that.circle_cover.removeClass('hover').addClass('leave');
+                that.name.show();
                 that.elem.fadeOut(100);
             })
         };
