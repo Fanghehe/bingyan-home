@@ -1,5 +1,6 @@
 nav.index_nav {
   height: 64px;
+  width: 100%;
   background-color: #000;
   opacity: 0.75;
   filter: alpha(opacity=75);
