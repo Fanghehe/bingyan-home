@@ -106,7 +106,6 @@ $(function(){
                         var pos11 = that.absPos(elem.get(0));
                         elem.bind('mousemove',function(e){
                             var mx = e.pageX-pos11.x,my = e.pageY-pos11.y;
-                            console.log(mx+my);
                             if(mx+my>450){
                                 that.arrows.css('zIndex',2);
                             }
@@ -192,7 +191,6 @@ $(function(){
             var that = this;
             this.sqr.each(function(e){
                 if($(this).attr('show')=='1'){
-                    //console.log($(this).index());
                     that.index = $(this).index();
                 }
                 var childLen = $(this).find('.item').length;
@@ -212,46 +210,82 @@ $(function(){
             }
 
         },
+//        addListener : function(){
+//            var that = this;
+//            this.arrow.bind('click',function(e){
+//                if($(this).hasClass('arrow_r')){//右箭头
+//                    if(that.index<that.len-1){//确保不是最后一张
+//                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOU').addClass('FOD');
+//                        setTimeout(function(){
+//                            that.sqr.eq(that.index).attr('show',1).removeClass('FOD').removeClass('FIU').removeClass('FOU').addClass('FID');
+//                            arrowHover.resetSqr();
+//                        },300);
+//                        that.index++;
+//                    }
+//                }else if($(this).hasClass('arrow_l')){//左箭头
+//                    if(that.index>0){//确保不是第一张
+//                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOD').addClass('FOU');
+//                        setTimeout(function(){
+//                            that.sqr.eq(that.index).attr('show',1).removeClass('FID').removeClass('FOU').removeClass('FOD').addClass('FIU');
+//                            arrowHover.resetSqr();
+//                        },300);
+//                        that.index--;
+//                    }
+//                }
+//                if(that.index>0){
+//                    that.arrow.eq(0).html(that.index-1+1999+'届');
+//                }else{
+//                    that.arrow.eq(0).html('破蛋而出');
+//                }
+//                if(that.index<that.len-1){
+//                    that.arrow.eq(1).html(that.index+1+1999+'届');
+//                }else{
+//                    that.arrow.eq(1).html('未完待续');
+//                }
+//            })
+//        },
+        setAngle:function(){
+            var self = this;
+            this.sqr.each(function(){
+                var _childs = $(this).find('.item');
+                _childs.addClass('flip');
+                if($(this).attr('show')==0){
+                    _childs.addClass('out-right');
+                }
+                $(this).addClass('viewport-flip');
+            })
+        },
         addListener : function(){
             var that = this;
+//            var goRight = function(elem){
+//
+//            };
+//            var goLeft = function(elem){
+//
+//            };
             this.arrow.bind('click',function(e){
                 if($(this).hasClass('arrow_r')){//右箭头
-
                     if(that.index<that.len-1){//确保不是最后一张
-                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOU').addClass('FOD');
+                        that.sqr.eq(that.index).find('.item').removeClass('in-right').removeClass('in-left').addClass('out-right');
+                        that.sqr.eq(that.index+1).show();
                         setTimeout(function(){
-                            that.sqr.eq(that.index).attr('show',1).removeClass('FOD').removeClass('FIU').removeClass('FOU').addClass('FID');
+                            that.sqr.eq(that.index-1).attr('show',0).hide();
+                            that.sqr.eq(that.index).attr('show',1).find('.item').removeClass('out-right').removeClass('out-left').addClass('in-left');
                             arrowHover.resetSqr();
-
-                        },300);
+                        },225);
                         that.index++;
                     }
-
-//                if(len-that.index>=0&&that.index>=1){
-//                    that.sqr.eq(that.index-2).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOU').addClass('FOD');
-//                    setTimeout(function(){
-//                        that.sqr.eq(that.index-1).attr('show',1).removeClass('FOD').removeClass('FIU').removeClass('FOU').addClass('FID');//index-1实为index-1++=index
-//                        arrowHover.resetSqr();
-//                    },300);
-//                }
                 }else if($(this).hasClass('arrow_l')){//左箭头
                     if(that.index>0){//确保不是第一张
-                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOD').addClass('FOU');
+                        that.sqr.eq(that.index).find('.item').removeClass('in-right').removeClass('in-left').addClass('out-left');
+                        that.sqr.eq(that.index-1).show();
                         setTimeout(function(){
-                            that.sqr.eq(that.index).attr('show',1).removeClass('FID').removeClass('FOU').removeClass('FOD').addClass('FIU');
+                            that.sqr.eq(that.index+1).attr('show',0).hide();
+                            that.sqr.eq(that.index).attr('show',1).find('.item').removeClass('out-right').removeClass('out-left').addClass('in-right');
                             arrowHover.resetSqr();
-
-                        },300);
+                        },225);
                         that.index--;
                     }
-
-//                if(len-that.index>=0&&that.index>=1){
-//                    that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOD').addClass('FOU');
-//                    setTimeout(function(){
-//                        that.sqr.eq(that.index-1).attr('show',1).removeClass('FID').removeClass('FOU').removeClass('FOD').addClass('FIU');
-//                        arrowHover.resetSqr();
-//                    },300);
-//                }
                 }
                 if(that.index>0){
                     that.arrow.eq(0).html(that.index-1+1999+'届');
@@ -267,6 +301,7 @@ $(function(){
         },
         init : function(){
             this.setStart();
+            this.setAngle();
             this.addListener();
         }
     }

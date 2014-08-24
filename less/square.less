@@ -133,6 +133,7 @@ body{
     line-height: 100px;
     cursor: pointer;
     z-index: 2;
+    -webkit-user-select:none;
   }
   .arrow:hover{
     background-position: -100px 0;
@@ -151,10 +152,16 @@ body{
   width: 600px;
   height: 600px;
   z-index:1;
+  display: none;
+//  -webkit-perspective: 1000px;
+//  perspective: 1000px;
+//  position: absolute;
 }
 .group-item.hidden{
   display: none;
-
+}
+.group-item.show{
+  display: block;
 }
 //@rstartY:-20px;
 @rstartY:-20px;
