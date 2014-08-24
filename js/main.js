@@ -62,7 +62,7 @@ $(function(){
             this.circle.bind('mouseleave',function(e){
                 that.circle_cover.removeClass('hover').addClass('leave');
                 that.name.show();
-                that.elem.fadeOut(100);
+                that.elem.fadeOut(300);
             })
         };
         this.init = function(){
@@ -103,6 +103,7 @@ $(function(){
                     that.logo.fadeIn(200);
                     that.circle.fadeIn(200);
                     that.arrow.fadeIn(200);
+                    $('body').scrollTop(0);
                 }
                 that.flag = !that.flag;
 
@@ -110,7 +111,7 @@ $(function(){
         }
     }
     indexDown.init();
-
+    $('body').scrollTop(0);
 
     function addLoadEvent(func) {
         var oldonload = window.onload;

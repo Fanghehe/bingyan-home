@@ -109,6 +109,7 @@ body,
 html {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 ol,
 ul {
@@ -330,4 +331,14 @@ body {
   font: 500 12px/15px '华文细黑', Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
   color: #858585;
   text-align: center;
+}
+@media (min-height: 1000px) {
+  #slide_wrap {
+    top: 250px;
+  }
+}
+@media (min-height: 1200px) {
+  #slide_wrap {
+    top: 300px;
+  }
 }

@@ -153,17 +153,18 @@ $(function(){
 //               alert($(this).index());
 //           });
            var  that = this;
-           this.slideItem.bind('click',function(e){
-               //console.log($(this).index());
-               //console.log(that.slideWrap.css('left')); 性能不好
+           this.slideItem.bind('mouseenter',function(e){
                var index = $(this).index(),
                    dis = index*(that.macW+that.itemMR);
-              // that.slideWrap.css('left',that.left-dis);
+               // that.slideWrap.css('left',that.left-dis);
                var thatIn = $(this);
-               that.slideWrap.animate({left:that.left-dis},600,'easeOutCubic',function(){
-                   that.slideItem.removeClass('light');
-                   thatIn.addClass('light');
-               })
+               setTimeout(function(){
+                   console.log(that.left+' '+dis)
+                   that.slideWrap.animate({left:that.left-dis},600,'easeOutCubic',function(){
+                       that.slideItem.removeClass('light');
+                       thatIn.addClass('light');
+                   })
+               },200);
 
            });
        },

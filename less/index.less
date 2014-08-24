@@ -42,6 +42,15 @@ div.circleBg{
   background-repeat: no-repeat;
   z-index: -1;
 }
+div.circleBgWrap{
+  position: absolute;
+  height: 100%;
+  width:100%;
+  z-index: -1;
+  background-color: #000;
+  opacity:0.25;
+  filter:alpha(opacity=25);
+}
 div.main{
   .center(68px);
 }
@@ -63,7 +72,7 @@ div.slide_down{
 }
 img.arrow{
   position: absolute;
-  top:-40px;
+  top:-30px;
   left: 50%;
   margin-left:-17px;
   cursor: pointer;
@@ -80,39 +89,40 @@ img.arrow.blur{
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
+@start_top:-35px;
 @-webkit-keyframes blur{
   from{
-    top:-40px;
+    top:@start_top;
   }to{
      top:-25px;
    }
 }
 @-moz-keyframes blur{
   from{
-    top:-55px;
+    top:@start_top;
   }to{
-     top:-30px;
+     top:-25px;
    }
 }
 @-ms-keyframes blur{
   from{
-    top:-55px;
+    top:@start_top;
   }to{
-     top:-30px;
+     top:-25px;
    }
 }
 @-o-keyframes blur{
   from{
-    top:-55px;
+    top:@start_top;
   }to{
-     top:-30px;
+     top:-25px;
    }
 }
 @keyframes blur{
   from{
-    top:-55px;
+    top:@start_top;
   }to{
-     top:-30px;
+     top:-25px;
    }
 }
 div.bottom_logo{
@@ -146,6 +156,7 @@ div.slide_down:hover div.border{
 div.slide_down:hover img.arrow.blur{
   opacity:0;
 }
+@duration:2s;
 div.index_down{
   position:absolute;
   top:100%;
@@ -154,6 +165,14 @@ div.index_down{
   background-color:#fff;
   z-index:101;
   text-align: center;
+//  -webkit-transition: top @duration linear;
+//  -moz-transition: top @duration linear;
+//  -ms-transition: top @duration linear;
+//  -o-transition: top @duration linear;
+//  transition: top @duration linear;
+  -webkit-transfom:translate3d(0, 0, 0);
+  transfom:translate3d(0, 0, 0);
+
   .down_logo{
     margin-top: 50px;
   }
@@ -171,23 +190,49 @@ div.index_down{
   z-index: 99;
 
 }
+@up_duration:.5s;
 .index_down.up{
-  -webkit-transition: top .5s linear;
-  -moz-transition: top 500 linear;
-  -ms-transition: top 500 linear;
-  -o-transition: top 500 linear;
-  transition: top .5s linear;
-  top: 180px;
+  -webkit-animation:goToTop @up_duration ease-out forwards;
+  animation:goToTop @up_duration ease-out forwards;
 }
+@down_duration:.5s;
 .index_down.down{
-  -webkit-transition: top .5s linear;
-  -moz-transition: top 500 linear;
-  -ms-transition: top 500 linear;
-  -o-transition: top 500 linear;
-  transition: top .5s linear;
-  top: 100%;
+  -webkit-animation:goToBottom @down_duration ease-out forwards;
+  animation:goToBottom @down_duration ease-out forwards;
 }
-
+@top:180px;
+@-webkit-keyframes goToTop{
+  0%{
+    top: 100%;
+  }
+  100%{
+    top: @top;
+  }
+ }
+@keyframes goToTop{
+  0%{
+    top: 100%;
+  }
+  100%{
+    top: @top;
+  }
+}
+@-webkit-keyframes goToBottom{
+  0%{
+    top: @top;
+  }
+  100%{
+    top: 100%;
+  }
+}
+@keyframes goToBottom{
+  0%{
+    top: @top;
+  }
+  100%{
+    top: 100%;
+  }
+}
 div.group_info{
   .center(55px,38px);
   width: 885px;
@@ -245,7 +290,7 @@ div.input_wrap label span{
   vertical-align:-4px;
 }
 div.input_wrap input,div.input_wrap textarea{
-  border:2px solid #bfbfbf;
+  border:1px solid #bfbfbf;
   width: 372px;
   padding:2px;
 }
@@ -270,7 +315,6 @@ input.info_sub{
   letter-spacing: 2px;
 }
 #index_ft{
-  padding:35px 115px 0 160px;
   background-color: #282828;
   color:white;
   letter-spacing:2px;
@@ -282,8 +326,6 @@ input.info_sub{
   }
   .bd{
     margin-top: 12px;
-//    text-align: justify;
-//    font-size:0;
     text-align: center;
   }
 
@@ -294,17 +336,46 @@ input.info_sub{
   .bd a:hover{
     text-decoration: underline;
   }
-//  .bd:after{
-//    content:" ";
-//    display: inline-block;
-//    width:100%;
-//    height: 0;
-//  }
   .ft{
     margin-top:30px;
     margin-bottom:25px;
     text-align: center;
     font-size: 14px;
     color:#989898;
+  }
+}
+@media only screen and (min-height:1200px){
+  @top:400px;
+  @-webkit-keyframes goToTop{
+    0%{
+      top: 100%;
+    }
+    100%{
+      top: @top;
+    }
+  }
+  @keyframes goToTop{
+    0%{
+      top: 100%;
+    }
+    100%{
+      top: @top;
+    }
+  }
+  @-webkit-keyframes goToBottom{
+    0%{
+      top: @top;
+    }
+    100%{
+      top: 100%;
+    }
+  }
+  @keyframes goToBottom{
+    0%{
+      top: @top;
+    }
+    100%{
+      top: 100%;
+    }
   }
 }

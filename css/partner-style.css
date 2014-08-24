@@ -109,6 +109,7 @@ body,
 html {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 ol,
 ul {
@@ -230,6 +231,8 @@ body {
   height: 100px;
   width: 100px;
   cursor: pointer;
+  background-image: url("../img/p_arrow.png");
+  background-position: -100px 0;
 }
 #square-group .item:hover .item-hover {
   visibility: visible;
@@ -256,27 +259,27 @@ body {
 #square-group .item-hover p.item-name {
   top: 50%;
 }
-#square-group .item1 {
+#square-group .item6 {
   left: 250px;
   top: 200px;
 }
-#square-group .item2 {
+#square-group .item10 {
   left: 250px;
   top: 300px;
 }
-#square-group .item3 {
+#square-group .item16 {
   left: 150px;
   top: 200px;
 }
-#square-group .item4 {
+#square-group .item18 {
   left: 350px;
   top: 200px;
 }
-#square-group .item5 {
+#square-group .item13 {
   left: 150px;
   top: 300px;
 }
-#square-group .item6 {
+#square-group .item1 {
   left: 350px;
   top: 300px;
 }
@@ -284,7 +287,7 @@ body {
   left: 250px;
   top: 100px;
 }
-#square-group .item8 {
+#square-group .item12 {
   left: 250px;
   top: 400px;
 }
@@ -292,7 +295,7 @@ body {
   left: 50px;
   top: 200px;
 }
-#square-group .item10 {
+#square-group .item2 {
   left: 450px;
   top: 200px;
 }
@@ -300,11 +303,11 @@ body {
   left: 50px;
   top: 300px;
 }
-#square-group .item12 {
+#square-group .item8 {
   left: 450px;
   top: 300px;
 }
-#square-group .item13 {
+#square-group .item15 {
   left: 150px;
   top: 100px;
 }
@@ -312,11 +315,11 @@ body {
   left: 350px;
   top: 100px;
 }
-#square-group .item15 {
+#square-group .item5 {
   left: 150px;
   top: 400px;
 }
-#square-group .item16 {
+#square-group .item3 {
   left: 350px;
   top: 400px;
 }
@@ -324,7 +327,7 @@ body {
   left: 250px;
   top: 0;
 }
-#square-group .item18 {
+#square-group .item4 {
   left: 250px;
   top: 500px;
 }
