@@ -187,6 +187,9 @@ $(function(){
         sqr : $('.group-item'),//一共有多少届
         len : $('.group-item').length,
         index : 0,//从第几张开始
+        itemArr : new Array(this.len),//存放所有的item的集合
+        TIME_INTERVAL:150,
+        ANIMATE_TIME_INTERVAL:300,
         setStart : function(){
             var that = this;
             this.sqr.each(function(e){
@@ -255,36 +258,133 @@ $(function(){
                 $(this).addClass('viewport-flip');
             })
         },
+        //把所有的item存到对应的数组里面
+        getAllLists:function(){
+          var self = this;
+          for(var i=0;i<self.len;i++){
+              self.itemArr[i] = [];
+              var arr1 = [],arr2 = [],arr3 = [],arr4 = [],arr5 = [];
+              arr1.push(self.sqr.eq(i).find('.item9'));
+              arr1.push(self.sqr.eq(i).find('.item11'));
+              arr2.push(self.sqr.eq(i).find('.item15'));
+              arr2.push(self.sqr.eq(i).find('.item16'));
+              arr2.push(self.sqr.eq(i).find('.item13'));
+              arr2.push(self.sqr.eq(i).find('.item5'));
+              arr3.push(self.sqr.eq(i).find('.item17'));
+              arr3.push(self.sqr.eq(i).find('.item7'));
+              arr3.push(self.sqr.eq(i).find('.item6'));
+              arr3.push(self.sqr.eq(i).find('.item10'));
+              arr3.push(self.sqr.eq(i).find('.item12'));
+              arr3.push(self.sqr.eq(i).find('.item4'));
+              arr4.push(self.sqr.eq(i).find('.item14'));
+              arr4.push(self.sqr.eq(i).find('.item18'));
+              arr4.push(self.sqr.eq(i).find('.item1'));
+              arr4.push(self.sqr.eq(i).find('.item3'));
+              arr5.push(self.sqr.eq(i).find('.item2'));
+              arr5.push(self.sqr.eq(i).find('.item8'));
+              self.itemArr[i].push(arr1);
+              self.itemArr[i].push(arr2);
+              self.itemArr[i].push(arr3);
+              self.itemArr[i].push(arr4);
+              self.itemArr[i].push(arr5);
+          }
+        },
+        goRight:function(){
+            var self = this;
+            var _currentGroup = this.itemArr[self.index],
+                _nextGroup = this.itemArr[self.index+1];
+            self.sqr.eq(self.index+1).css('z-index',0).show();
+            self.index++;//切换到下一层
+            var moveRight = function(index,callback){
+                for(var i = 0;i<_currentGroup[index].length;i++){
+                    _currentGroup[index][i].removeClass('in-right').removeClass('in-left').addClass('out-right');
+                }
+                var callFunc = null;
+                if(arguments.length==2){
+                    callFunc= callback;
+                }
+                setTimeout(function(){
+                    self.sqr.eq(self.index).attr('show',1);
+                    for(var t = 0;t<_nextGroup[index].length;t++){
+                        _nextGroup[index][t].removeClass('out-right').removeClass('out-left').addClass('in-left');
+                    }
+                    if(!!callFunc){
+                        callFunc()
+                    }
+
+                },self.ANIMATE_TIME_INTERVAL)
+            };
+            setTimeout(function(){
+                self.sqr.eq(self.index).attr('show',1)
+                moveRight(4);
+            },0);
+            setTimeout(function(){
+                moveRight(3);
+            },self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(2);
+            },2*self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(1);
+            },3*self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(0,function(){self.sqr.eq(self.index-1).attr('show',0).hide()});
+                self.sqr.eq(self.index).css('z-index',1)
+                arrowHover.resetSqr();
+            },4*self.TIME_INTERVAL);
+        },
+        goLeft:function(){
+            var self = this;
+            var _currentGroup = this.itemArr[self.index],
+                _nextGroup = this.itemArr[self.index-1];
+            self.sqr.eq(self.index-1).show();
+            self.index--;//切换到下一层
+            var moveRight = function(index,callback){
+                for(var i = 0;i<_currentGroup[index].length;i++){
+                    _currentGroup[index][i].removeClass('in-right').removeClass('in-left').addClass('out-left')
+                }
+                var callFunc = null;
+                if(arguments.length==2){
+                    callFunc = callback;
+                }
+                setTimeout(function(){
+                    self.sqr.eq(self.index).attr('show',1);
+                    for(var t = 0;t<_nextGroup[index].length;t++){
+                        _nextGroup[index][t].removeClass('out-right').removeClass('out-left').addClass('in-right');
+                    }
+                    if(!!callFunc){
+                        callFunc()
+                    }
+                },self.ANIMATE_TIME_INTERVAL)
+            };
+            setTimeout(function(){
+                self.sqr.eq(self.index).attr('show',1)
+                moveRight(0);
+            },0);
+            setTimeout(function(){
+                moveRight(1);
+            },self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(2);
+            },2*self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(3);
+            },3*self.TIME_INTERVAL);
+            setTimeout(function(){
+                moveRight(4,function(){self.sqr.eq(self.index+1).attr('show',0).hide()});
+                arrowHover.resetSqr();
+            },4*self.TIME_INTERVAL);
+        },
         addListener : function(){
             var that = this;
-//            var goRight = function(elem){
-//
-//            };
-//            var goLeft = function(elem){
-//
-//            };
             this.arrow.bind('click',function(e){
                 if($(this).hasClass('arrow_r')){//右箭头
                     if(that.index<that.len-1){//确保不是最后一张
-                        that.sqr.eq(that.index).find('.item').removeClass('in-right').removeClass('in-left').addClass('out-right');
-                        that.sqr.eq(that.index+1).show();
-                        setTimeout(function(){
-                            that.sqr.eq(that.index-1).attr('show',0).hide();
-                            that.sqr.eq(that.index).attr('show',1).find('.item').removeClass('out-right').removeClass('out-left').addClass('in-left');
-                            arrowHover.resetSqr();
-                        },225);
-                        that.index++;
+                        that.goRight();
                     }
                 }else if($(this).hasClass('arrow_l')){//左箭头
                     if(that.index>0){//确保不是第一张
-                        that.sqr.eq(that.index).find('.item').removeClass('in-right').removeClass('in-left').addClass('out-left');
-                        that.sqr.eq(that.index-1).show();
-                        setTimeout(function(){
-                            that.sqr.eq(that.index+1).attr('show',0).hide();
-                            that.sqr.eq(that.index).attr('show',1).find('.item').removeClass('out-right').removeClass('out-left').addClass('in-right');
-                            arrowHover.resetSqr();
-                        },225);
-                        that.index--;
+                        that.goLeft();
                     }
                 }
                 if(that.index>0){
@@ -302,6 +402,7 @@ $(function(){
         init : function(){
             this.setStart();
             this.setAngle();
+            this.getAllLists();
             this.addListener();
         }
     }

@@ -4,6 +4,8 @@
 
   position: absolute;
 }
+@duration:300ms;
+@curve:ease-out;
 .flip {
   -webkit-backface-visibility:hidden;
   -webkit-transform:translateX(0);
@@ -13,30 +15,38 @@
 .flip.out-left {
   -webkit-transform: rotateY(-90deg) scale(.9);
   -webkit-animation-name: flipouttoleft;
-  -webkit-animation-duration: 225ms;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-timing-function:@curve;
+  animation-timing-function:@curve;
   transform: rotateY(-90deg) scale(.9);
   animation-name: flipouttoleft;
-  animation-duration: 225ms;
+  animation-duration: @duration;
 }
 .flip.out-right {
   -webkit-transform: rotateY(-90deg) scale(.9);
   -webkit-animation-name: flipouttoright;
-  -webkit-animation-duration: 225ms;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-timing-function:@curve;
+  animation-timing-function:@curve;
   transform: rotateY(-90deg) scale(.9);
   animation-name: flipouttoright;
-  animation-duration: 225ms;
+  animation-duration: @duration;
 }
 .flip.in-right {
   -webkit-animation-name: flipintoright;
-  -webkit-animation-duration: 225ms;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-timing-function:@curve;
+  animation-timing-function:@curve;
   animation-name: flipintoright;
-  animation-duration: 225ms;
+  animation-duration: @duration;
 }
 .flip.in-left {
   -webkit-animation-name: flipintoleft;
-  -webkit-animation-duration: 225ms;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-timing-function:@curve;
+  animation-timing-function:@curve;
   animation-name: flipintoleft;
-  animation-duration: 225ms;
+  animation-duration: @duration;
 }
 .flip.out.reverse {
   -webkit-transform: rotateY(90deg) scale(.9);
