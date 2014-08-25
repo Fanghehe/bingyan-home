@@ -531,38 +531,38 @@ div.group-item[show='1'] {
 .flip.out-left {
   -webkit-transform: rotateY(-90deg) scale(0.9);
   -webkit-animation-name: flipouttoleft;
-  -webkit-animation-duration: 300ms;
+  -webkit-animation-duration: 250ms;
   -webkit-animation-timing-function: ease-out;
   animation-timing-function: ease-out;
   transform: rotateY(-90deg) scale(0.9);
   animation-name: flipouttoleft;
-  animation-duration: 300ms;
+  animation-duration: 250ms;
 }
 .flip.out-right {
   -webkit-transform: rotateY(-90deg) scale(0.9);
   -webkit-animation-name: flipouttoright;
-  -webkit-animation-duration: 300ms;
+  -webkit-animation-duration: 250ms;
   -webkit-animation-timing-function: ease-out;
   animation-timing-function: ease-out;
   transform: rotateY(-90deg) scale(0.9);
   animation-name: flipouttoright;
-  animation-duration: 300ms;
+  animation-duration: 250ms;
 }
 .flip.in-right {
   -webkit-animation-name: flipintoright;
-  -webkit-animation-duration: 300ms;
+  -webkit-animation-duration: 250ms;
   -webkit-animation-timing-function: ease-out;
   animation-timing-function: ease-out;
   animation-name: flipintoright;
-  animation-duration: 300ms;
+  animation-duration: 250ms;
 }
 .flip.in-left {
   -webkit-animation-name: flipintoleft;
-  -webkit-animation-duration: 300ms;
+  -webkit-animation-duration: 250ms;
   -webkit-animation-timing-function: ease-out;
   animation-timing-function: ease-out;
   animation-name: flipintoleft;
-  animation-duration: 300ms;
+  animation-duration: 250ms;
 }
 .flip.out.reverse {
   -webkit-transform: rotateY(90deg) scale(0.9);

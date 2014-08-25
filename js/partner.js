@@ -188,8 +188,8 @@ $(function(){
         len : $('.group-item').length,
         index : 0,//从第几张开始
         itemArr : new Array(this.len),//存放所有的item的集合
-        TIME_INTERVAL:150,
-        ANIMATE_TIME_INTERVAL:300,
+        TIME_INTERVAL:50,
+        ANIMATE_TIME_INTERVAL:250,
         setStart : function(){
             var that = this;
             this.sqr.each(function(e){
