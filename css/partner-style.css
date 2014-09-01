@@ -103,13 +103,13 @@ section {
 body {
   position: absolute;
   line-height: 1;
-  font: 500 0.875em/1.7 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  font: 500 0.875em/1.7 Hiragino Sans GB, STXihei, '黑体', 'MICROSOFT YAHEI';
 }
 body,
 html {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  -webkit-user-select: none;
 }
 ol,
 ul {
@@ -190,7 +190,6 @@ a {
   color: white;
 }
 #main-nav ul.bd .title p {
-  height: 1.5em;
   line-height: 1.5em;
 }
 #main-nav ul.bd li.now .title {

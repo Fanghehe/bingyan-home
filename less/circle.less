@@ -40,6 +40,7 @@ div.circle_cover{
   -webkit-border-radius: 108.5px;
   -moz-border-radius: 108.5px;
   border-radius: 108.5px;
+//  background-color: #fff;
 }
 @leave_duration:.15s;
 .circle_cover.leave{
@@ -74,19 +75,21 @@ div.circle_cover{
     opacity:0;
   }
 }
-.cover1{
+
+.cover1 {
   .group_hover_bg;
+
 }
-.cover2{
+.cover2 {
   .group_hover_bg(0,-217px);
 }
-.cover3{
+.cover3 {
   .group_hover_bg(0,-434px);
 }
-.cover4{
+.cover4 {
   .group_hover_bg(0,-651px);
 }
-.cover5{
+.cover5 {
   .group_hover_bg(0,-868px);
 }
 @hover_duration:.15s;
@@ -135,17 +138,26 @@ div.circle_cover{
   text-align: center;
   color: white;
   font-size: 20px;
-
   letter-spacing: 2px;
 
 }
 .name_en{
   top: 70px;
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 .name_ch{
   top:120px;
-  font-family: '黑体','MICROSOFT YAHEI';
+  font-family: Hiragino Sans GB,STXihei,'黑体','MICROSOFT YAHEI';
+  font-weight:400;
+}
+div.circle_cover{
+  .name_en,.name_ch{
+//    color:#000;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    -webkit-user-select:none;
+
+  }
 }
 @media only screen and (min-height:800px){
   ul.circle_group{

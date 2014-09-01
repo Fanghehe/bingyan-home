@@ -103,12 +103,13 @@ section {
 body {
   position: absolute;
   line-height: 1;
-  font: 500 0.875em/1.7 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  font: 500 0.875em/1.7 Hiragino Sans GB, STXihei, '黑体', 'MICROSOFT YAHEI';
 }
 body,
 html {
   height: 100%;
   width: 100%;
+  -webkit-user-select: none;
 }
 ol,
 ul {
@@ -130,7 +131,7 @@ a {
 }
 #main-nav {
   mmargin-bottom: 33px;
-  height: 118px;
+  height: 100px;
   background-color: #2e2e2e;
   overflow: hidden;
 }
@@ -166,7 +167,7 @@ a {
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
-  background-color: #000;
+  background-image: url('../img/hover_black_nav.png');
   opacity: .5;
   filter: alpha(opacity=50);
   -webkit-transition: opacity .1s linear;
@@ -181,15 +182,14 @@ a {
 }
 #main-nav ul.bd .title {
   display: none;
-  float: right;
-  margin: 25px 0 0 10px;
-  width: 112px;
+  overflow: hidden;
+  margin-top: 25px;
+  padding-left: 10px;
+  text-align: center;
   font-size: 12px;
   color: white;
-  text-align: center;
 }
 #main-nav ul.bd .title p {
-  height: 1.5em;
   line-height: 1.5em;
 }
 #main-nav ul.bd li.now .title {
@@ -212,4 +212,51 @@ a {
 }
 #main-nav ul.bd .circle5 {
   background: url("../img/group_nav.png") no-repeat -280px 0;
+}
+div.group-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.group-item {
+  position: absolute;
+  background-image: url(../img/group_person.png);
+  background-repeat: no-repeat;
+}
+.group-mobile {
+  left: 15.2%;
+  top: 49.3%;
+  width: 154px;
+  height: 242px;
+  background-position: 0 -207px;
+}
+.group-houtai {
+  left: 28.1%;
+  top: 28.2%;
+  width: 231px;
+  height: 370px;
+  background-position: -137px -47px;
+}
+.group-design {
+  left: 47.3%;
+  top: 28.2%;
+  width: 119px;
+  height: 304px;
+  background-position: -355px -47px;
+}
+.group-fe {
+  left: 67.8%;
+  top: 86.5%;
+  margin: -364px 0 0 -162px;
+  width: 162px;
+  height: 364px;
+  background-position: -486px -197px;
+}
+.group-product {
+  left: 70.5%;
+  top: 44.6%;
+  width: 136px;
+  height: 284px;
+  background-position: -645px -171px;
 }

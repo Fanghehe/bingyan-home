@@ -27,10 +27,9 @@ $(function(){
     BG.prototype = {
         resize:function(){
             wW/wH<this.w/this.h? this.elem.css("background-size", "auto 100%"):this.elem.css("background-size", "100% auto");
-            console.log('resize');
         }
     }
-    var indexBg = new BG($('body'),1200,912);
+    var indexBg = new BG($('body'),1500,912);
     var indexBg1 = new BG($('.bg1'),1300,813);
     var indexBg2 = new BG($('.bg2'),1300,863);
     var indexBg3 = new BG($('.bg3'),1300,866);
@@ -89,7 +88,6 @@ $(function(){
             var that = this;
             this.downBtn.bind('click',function(e){
                 if(!that.flag){
-                   // that.downCtx.animate({'top':'180px'},800);
                     that.downCtx.addClass('up');
                     if(that.downCtx.hasClass('down')){
                         that.downCtx.removeClass('down');
@@ -97,6 +95,10 @@ $(function(){
                     that.logo.fadeOut(200);
                     that.circle.fadeOut(200);
                     that.arrow.fadeOut(200);
+                    setTimeout(function(){
+                        $('body').css('overflow','visible')
+                    },500)
+
                 }else{
                     that.downCtx.removeClass('up');
                     that.downCtx.addClass('down');
@@ -104,6 +106,9 @@ $(function(){
                     that.circle.fadeIn(200);
                     that.arrow.fadeIn(200);
                     $('body').scrollTop(0);
+                    setTimeout(function(){
+                        $('body').css('overflow','hidden')
+                    },500)
                 }
                 that.flag = !that.flag;
 
@@ -112,7 +117,6 @@ $(function(){
     }
     indexDown.init();
     $('body').scrollTop(0);
-
     function addLoadEvent(func) {
         var oldonload = window.onload;
         if (typeof window.onload != 'function') {

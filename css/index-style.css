@@ -16,6 +16,7 @@ body {
   position: relative;
   background: url("../img/index_dim.jpg") no-repeat;
   background-position: 50% 0;
+  overflow: hidden;
 }
 div.circleBg {
   display: none;
@@ -458,13 +459,13 @@ section {
 body {
   position: absolute;
   line-height: 1;
-  font: 500 0.875em/1.7 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  font: 500 0.875em/1.7 Hiragino Sans GB, STXihei, '黑体', 'MICROSOFT YAHEI';
 }
 body,
 html {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  -webkit-user-select: none;
 }
 ol,
 ul {
@@ -622,11 +623,18 @@ div.circle_cover {
 }
 .name_en {
   top: 70px;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .name_ch {
   top: 120px;
-  font-family: '黑体', 'MICROSOFT YAHEI';
+  font-family: Hiragino Sans GB, STXihei, '黑体', 'MICROSOFT YAHEI';
+  font-weight: 400;
+}
+div.circle_cover .name_en,
+div.circle_cover .name_ch {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-user-select: none;
 }
 @media only screen and (min-height: 800px) {
   ul.circle_group {
