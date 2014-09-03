@@ -164,7 +164,7 @@ $(function(){
                        that.slideItem.removeClass('light');
                        thatIn.addClass('light');
                    })
-               },200);
+               },500);
 
            });
        },

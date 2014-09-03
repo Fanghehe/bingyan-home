@@ -21,11 +21,11 @@ $(function(){
             var self = this;
             if(wW/wH<this.w/this.h){
                 //背景高度超出
-                $('.group-wrap').css({"height": "100%","width":"auto"});
+                $('.group-wrap').css({"height": "100%","width":""});
                 this.elem.css({"height": "100%","width":"auto"});
             }else{
                 //背景宽度超出
-                $('.group-wrap').css({"height": "auto","width":"100%"});
+                $('.group-wrap').css({"height": "","width":"100%"});
                 this.elem.css({"width":"100%","height":"auto"});
             }
             $('.group-item').each(function(){
@@ -38,4 +38,9 @@ $(function(){
         }
     }
     var bodyBg = new BG($('.group-bg'),1200,720);
+
+    $('.group-wrap').on('click','.group-item',function(e){
+        $('.group-item').addClass('release').removeClass('active');
+        $(this).addClass('active').removeClass('release');
+    })
 })

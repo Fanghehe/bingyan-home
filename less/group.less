@@ -7,43 +7,230 @@ div.group-wrap{
 }
 .group-item{
   position: absolute;
+}
+.person{
+  position: absolute;
+  top:0px;
+  left: 0px;
   background-image: url(../img/group_person.png);
   background-repeat: no-repeat;
 }
-.group-mobile{
+@flyTime:1.5s;
+.group-item.active{
+  .person-cover{
+
+    opacity: 0;
+    filter:alpha(opacity=0);
+  }
+  .person{
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -moz-animation:fly @flyTime linear infinite alternate forwards;
+    -ms-animation:fly @flyTime linear infinite alternate forwards;
+    -o-animation:fly @flyTime linear infinite alternate forwards;
+    -webkit-animation:fly @flyTime linear infinite alternate forwards;
+    animation:fly @flyTime linear infinite alternate forwards;
+  }
+  .shadow{
+    -moz-animation:shrink @flyTime linear infinite alternate forwards;
+    -ms-animation:shrink @flyTime linear infinite alternate forwards;
+    -o-animation:shrink @flyTime linear infinite alternate forwards;
+    -webkit-animation:shrink @flyTime linear infinite alternate forwards;
+    animation:shrink @flyTime linear infinite alternate forwards;
+  }
+}
+
+.group-item.release{
+  .person-cover{
+    opacity: 1;
+    filter:alpha(opacity=100);
+  }
+  
+}
+@-webkit-keyframes shrink{
+  from{
+    -webkit-transform:scale(1)
+  }to{
+     -webkit-transform:scale(.8)
+   }
+}
+@-moz-keyframes shrink{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@-ms-keyframes shrink{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@keyframes shrink{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@start_top:0px;
+@end_top:-25px;
+@-webkit-keyframes fly{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@-moz-keyframes fly{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@-ms-keyframes fly{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@keyframes fly{
+  from{
+    top:@start_top;
+  }to{
+     top:@end_top;
+   }
+}
+@opacityTime :.3s;
+.person-cover{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  background-image: url(../img/group_person_cover.png);
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter:alpha(opacity=0);
+  -webkit-transition: opacity @opacityTime linear;
+  -moz-transition: opacity @opacityTime linear;
+  -ms-transition: opacity @opacityTime linear;
+  -o-transition: opacity @opacityTime linear;
+  transition: opacity @opacityTime linear;
+
+}
+.shadow{
+  position: absolute;
+  top:0;
+  left: 0;
+  height:256px;
+  background-image: url(../img/group_shadow.png);
+  background-repeat: no-repeat;
+}
+.group-mobile {
   left: 15.2%;
   top: 49.3%;
-  width: 154px;
-  height: 242px;
-  background-position: 0 -207px;
+  .person,.person-cover{
+    width: 154px;
+    height: 242px;
+    background-position: 0 -207px;
+
+  }
+  .shadow{
+    top:52px;
+    left: -15px;
+    width: 137px;
+    background-position: 0 0px;
+    -webkit-transform-origin: 137px 179px;
+    -moz-transform-origin: 137px 179px;
+    -ms-transform-origin: 137px 179px;
+    -o-transform-origin: 137px 179px;
+    transform-origin: 137px 179px;
+  }
 }
 .group-houtai{
   left: 28.1%;
   top: 28.2%;
-  width: 231px;
-  height: 370px;
-  background-position: -137px -47px;
+  .person,.person-cover{
+    width: 231px;
+    height: 370px;
+    background-position: -137px -47px;
+  }
+  .shadow{
+    top:215px;
+    left: 42px;
+    width: 119px;
+    background-position: -195px 0px;
+    -webkit-transform-origin: 119px 148px;
+    -moz-transform-origin: 119px 148px;
+    -ms-transform-origin: 119px 148px;
+    -o-transform-origin: 119px 148px;
+    transform-origin: 119px 148px;
+  }
 }
 .group-design{
   left: 47.3%;
   top: 28.2%;
-  width: 119px;
-  height: 304px;
-  background-position: -355px -47px;
+  .person,.person-cover{
+    width: 119px;
+    height: 304px;
+    background-position: -355px -47px;
+  }
+  .shadow{
+    top:210px;
+    left: -40px;
+    width: 143px;
+    background-position: -343px 0px;
+    -webkit-transform-origin: 129px 96px;
+    -moz-transform-origin: 129px 96px;
+    -ms-transform-origin: 129px 96px;
+    -o-transform-origin: 129px 96px;
+    transform-origin: 129px 96px;
+  }
 }
 .group-fe{
   left: 67.8%;
   top: 86.5%;
-  margin: -364px 0 0 -162px;
-  width: 162px;
-  height: 364px;
-  background-position: -486px -197px;
-
+  margin: -343px 0 0 -159px;
+  .person,.person-cover{
+    width: 162px;
+    height: 364px;
+    background-position: -486px -197px;
+  }
+  .shadow{
+    top:68px;
+    left: -8px;
+    width: 106px;
+    background-position: -497px 0px;
+    -webkit-transform-origin: 117px 244px;
+    -moz-transform-origin: 117px 244px;
+    -ms-transform-origin: 117px 244px;
+    -o-transform-origin: 117px 244px;
+    transform-origin: 117px 244px;
+  }
 }
 .group-product{
-  left: 70.5%;
-  top: 44.6%;
-  width: 136px;
-  height: 284px;
-  background-position: -645px -171px;
+  left: 80.4%;
+  top: 54.2%;
+  margin: -124px 0 0 -124px;
+  .person,.person-cover{
+    width: 136px;
+    height: 284px;
+    background-position: -645px -171px;
+  }
+  .shadow{
+    top:94px;
+    left: 34px;
+    width: 99px;
+    background-position: -697px 0px;
+    -webkit-transform-origin: 53px 102px;
+    -moz-transform-origin: 53px 102px;
+    -ms-transform-origin: 53px 102px;
+    -o-transform-origin: 53px 102px;
+    transform-origin: 53px 102px;
+  }
 }
