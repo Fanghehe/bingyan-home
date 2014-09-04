@@ -241,12 +241,10 @@ body {
   -o-transform: rotateY(360deg);
   transform: rotateY(360deg);
 }
-#slide_wrap .mac {
+#slide_wrap .device {
   position: relative;
   margin-right: 165px;
   width: 604px;
-  height: 405px;
-  background: url("../img/mac_nosel.png") no-repeat;
   cursor: pointer;
   overflow: hidden;
   -webkit-transition: background 50ms linear;
@@ -255,37 +253,48 @@ body {
   -o-transition: background .1s linear;
   transition: background 50ms linear;
 }
-#slide_wrap .mac img {
-  margin-top: 21px;
-  width: 466px;
-  height: 291px;
-}
-#slide_wrap .mac:hover {
-  background-image: url("../img/mac_nobg.png");
-}
 #slide_wrap .img_wrap {
   position: absolute;
-  background-color: #000;
-  left: 70px;
-  top: 21px;
-  width: 466px;
-  height: 291px;
-  opacity: .5;
-  filter: alpha(opacity=50);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   -webkit-transition: opacity .1s linear;
   -moz-transition: opacity .1s linear;
   -ms-transition: opacity .1s linear;
   -o-transition: opacity .1s linear;
   transition: opacity .1s linear;
 }
-#slide_wrap .mac:hover .img_wrap {
+#slide_wrap .mac {
+  background: url(../img/mac_nobg.png) no-repeat;
+  height: 405px;
+}
+#slide_wrap .mac .img_wrap {
+  background: url('../img/mac_nosel.png') no-repeat;
+}
+#slide_wrap .mac img {
+  margin-top: 21px;
+  width: 466px;
+  height: 291px;
+}
+#slide_wrap .iphone {
+  top: -30px;
+  background: url(../img/iphone_nobg.png) no-repeat 50%;
+  height: 445px;
+}
+#slide_wrap .iphone .img_wrap {
+  background: url('../img/iphone_nosel.png') no-repeat 50%;
+}
+#slide_wrap .iphone img {
+  margin-top: 72px;
+  width: 170px;
+  height: 301px;
+}
+#slide_wrap .device:hover .img_wrap {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-#slide_wrap .slide_item.light .mac {
-  background-image: url("../img/mac_nobg.png");
-}
-#slide_wrap .slide_item.light .mac .img_wrap {
+#slide_wrap .slide_item.light .device .img_wrap {
   opacity: 0;
   filter: alpha(opacity=0);
 }

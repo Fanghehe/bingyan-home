@@ -149,22 +149,28 @@ $(function(){
            this.slideWrap.css('left',this.left);
        },
        addListener : function(){   //绑定点击事件
-//           this.slideWrap.delegate(this.slideItem,'click',function(e){
-//               alert($(this).index());
-//           });
+           //nextT解决连续点击的问题
+           var t = null,nextT = true;
            var  that = this;
+           var _throttle = function(fn,delay,context){
+               clearTimeout(nextT);
+               nextT = setTimeout(function(){
+                   fn.call(context);
+               },delay)
+           };
            this.slideItem.bind('mouseenter',function(e){
+               clearTimeout(t);
                var index = $(this).index(),
                    dis = index*(that.macW+that.itemMR);
                // that.slideWrap.css('left',that.left-dis);
                var thatIn = $(this);
-               setTimeout(function(){
-                   console.log(that.left+' '+dis)
-                   that.slideWrap.animate({left:that.left-dis},600,'easeOutCubic',function(){
-                       that.slideItem.removeClass('light');
-                       thatIn.addClass('light');
-                   })
-               },500);
+                   t = setTimeout(function(){
+                       // console.log(that.left+' '+dis)
+                       that.slideWrap.animate({left:that.left-dis},600,'easeOutCubic',function(){
+                           that.slideItem.removeClass('light');
+                           thatIn.addClass('light');
+                       })
+                   },500);
 
            });
        },

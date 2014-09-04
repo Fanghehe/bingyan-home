@@ -25,12 +25,10 @@ body{
       transform: rotateY(360deg);
     }
   }
-  .mac{
+  .device{
     position: relative;
     margin-right: 165px;
     width: 604px;
-    height: 405px;
-    background: url("../img/mac_nosel.png") no-repeat;
     cursor: pointer;
     overflow: hidden;
     -webkit-transition: background 50ms linear;
@@ -38,36 +36,51 @@ body{
     -ms-transition: background .1s linear;
     -o-transition: background .1s linear;
     transition: background 50ms linear;
-    img{
-      margin-top: 21px;
-      width: 466px;
-      height: 291px;
-    }
-  }
-  .mac:hover{
-    background-image: url("../img/mac_nobg.png");
+
   }
   .img_wrap{
     position: absolute;
-    background-color: #000;
-    left:70px;
-    top: 21px;
-    width: 466px;
-    height: 291px;
-    opacity: .5;
-    filter:alpha(opacity=50);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     -webkit-transition: opacity .1s linear;
     -moz-transition: opacity .1s linear;
     -ms-transition: opacity .1s linear;
     -o-transition: opacity .1s linear;
     transition: opacity .1s linear;
   }
-  .mac:hover .img_wrap{
+  .mac{
+    background: url(../img/mac_nobg.png) no-repeat;
+    height: 405px;
+    .img_wrap{
+      background: url('../img/mac_nosel.png') no-repeat;
+    }
+    img{
+      margin-top: 21px;
+      width: 466px;
+      height: 291px;
+    }
+  }
+  .iphone{
+    top: -30px;
+    background: url(../img/iphone_nobg.png) no-repeat 50%;
+    height: 445px;
+    .img_wrap{
+      background: url('../img/iphone_nosel.png') no-repeat 50%;
+    }
+    img{
+      margin-top: 72px;
+      width: 170px;
+      height: 301px;
+    }
+  }
+
+  .device:hover .img_wrap{
     opacity: 0;
     filter:alpha(opacity=0);
   }
-  .slide_item.light .mac{
-    background-image: url("../img/mac_nobg.png");
+  .slide_item.light .device{
     .img_wrap{
       opacity: 0;
       filter:alpha(opacity=0);
