@@ -15,7 +15,14 @@ $(function(){
                     that.index=0;
                 }
                 that.slideGroup.removeClass('slideInRight').addClass('slideOutLeft');
+                $('.team-words-wrap').removeClass('slideInRight').addClass('slideOutRight');
                 that.slideGroup.eq(that.index).removeClass('slideOutLeft').addClass('slideInRight');
+                setTimeout(function(){
+                    $('.team-words-wrap').eq(that.index).removeClass('slideOutRight').addClass('slideInRight');
+                },500);
+                setTimeout(function(){
+                    $('.team-words-wrap').eq(that.index).addClass('slideOutRight').removeClass('slideInRight');
+                },7500);
                 that.btnGroup.removeClass('now');
                 that.btnGroup.eq(that.index).addClass('now');
                 that.t = setTimeout(checkClass,8000);
@@ -27,14 +34,28 @@ $(function(){
           that.btnGroup.bind('click',function(e){
               clearTimeout(that.t);
               that.index = $(this).index();
-              that.slideGroup.removeClass('slideInRight').addClass('slideOutLeft');
-              that.slideGroup.eq(that.index-1).removeClass('slideOutLeft').addClass('slideInRight');
-              that.btnGroup.removeClass('now');
-              that.btnGroup.eq(that.index-1).addClass('now');
-              that.setTimer();
+              $('.team-words-wrap').removeClass('slideInRight').addClass('slideOutRight');
+              that.t = setTimeout(function(){
+                  that.slideGroup.removeClass('slideInRight').addClass('slideOutLeft');
+                  that.slideGroup.eq(that.index-1).removeClass('slideOutLeft').addClass('slideInRight');
+                  setTimeout(function(){
+                      $('.team-words-wrap').eq(that.index-1).removeClass('slideOutRight').addClass('slideInRight');
+                  },500);
+                  that.btnGroup.removeClass('now');
+                  that.btnGroup.eq(that.index-1).addClass('now');
+                  that.setTimer();
+              },500);
+
           });
         },
         init:function(){
+            setTimeout(function(){
+                $('.team-words-wrap').eq(0).removeClass('slideOutRight').addClass('slideInRight');
+
+            },500);
+            setTimeout(function(){
+                $('.team-words-wrap').eq(0).addClass('slideOutRight').removeClass('slideInRight');
+            },7500);
             this.setTimer();
             this.addListener();
         }

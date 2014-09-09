@@ -30,17 +30,18 @@ $(function(){
         }
     }
     var indexBg = new BG($('body'),1500,912);
-    var indexBg1 = new BG($('.bg1'),1300,813);
-    var indexBg2 = new BG($('.bg2'),1300,863);
-    var indexBg3 = new BG($('.bg3'),1300,866);
+    var indexBg1 = new BG($('.bg1'),1100,461);
+    var indexBg2 = new BG($('.bg2'),1200,720);
+    var indexBg3 = new BG($('.bg3'),1300,674);
     var indexBg4 = new BG($('.bg4'),1300,863);
     var indexBg5 = new BG($('.bg5'),1288,638);
     var indexImg = function(elem,src,circle){
         this.elem = elem;
         this.src = src;
         this.circle = circle;
-        this.circle_cover = this.circle.find('.circle_cover');
-        this.name = this.circle.find('.name');
+        this.circleCover = this.circle.prev('.circle_cover');
+        this.name = this.circle.prevAll('.name');
+        this.blackWrap = this.circle.prevAll('.circle_cover_black');
         this.loadImg = function(){//图片预加载
             var img = new Image();
             var that = this;
@@ -54,13 +55,29 @@ $(function(){
         this.bind = function(){
             var that = this;
             this.circle.bind('mouseenter',function(e){
-                that.circle_cover.addClass('hover').removeClass('leave');
+                clearTimeout(t);
+                that.circleCover.addClass('hover').removeClass('leave');
                 that.name.hide();
-                that.elem.fadeIn(600);
+                that.blackWrap.hide();
+                console.log(that.blackWrap.length);
+                if(firstTriger){
+                    firstTriger = false;
+                    that.elem.fadeIn(600);
+                    return
+                }
+                t = setTimeout(function(){
+                    that.elem.fadeIn(600);
+                },600);
             });
             this.circle.bind('mouseleave',function(e){
-                that.circle_cover.removeClass('hover').addClass('leave');
+                clearTimeout(t);
+                clearTimeout(trigerT);
+                trigerT = setTimeout(function(){
+                    firstTriger = true;
+                },300);
+                that.circleCover.removeClass('hover').addClass('leave');
                 that.name.show();
+                that.blackWrap.show();
                 that.elem.fadeOut(300);
             })
         };
@@ -69,11 +86,15 @@ $(function(){
             this.bind();
         }
     }
-    var ib1 = new indexImg($('div.bg1'),'img/team_dim.jpg',$('li.item1'));
-    var ib2 = new indexImg($('div.bg2'),'img/group_dim.jpg',$('li.item2'));
-    var ib3 = new indexImg($('div.bg3'),'img/pro_dim.jpg',$('li.item3'));
-    var ib4 = new indexImg($('div.bg4'),'img/partner_dim.jpg',$('li.item4'));
-    var ib5 = new indexImg($('div.bg5'),'img/recruit.jpg',$('li.item5'));
+    //t用于函数节流
+    var t = null;
+    var trigerT = null;
+    var firstTriger = true;
+    var ib1 = new indexImg($('div.bg1'),'img/team_dim.jpg',$('.cc1'));
+    var ib2 = new indexImg($('div.bg2'),'img/group_dim.jpg',$('.cc2'));
+    var ib3 = new indexImg($('div.bg3'),'img/pro_dim.jpg',$('.cc3'));
+    var ib4 = new indexImg($('div.bg4'),'img/partner_dim.jpg',$('.cc4'));
+    var ib5 = new indexImg($('div.bg5'),'img/recruit.jpg',$('.cc5'));
 //
 //
 //
@@ -94,10 +115,10 @@ $(function(){
                     }
                     that.logo.fadeOut(200);
                     that.circle.fadeOut(200);
-                    that.arrow.fadeOut(200);
-                    setTimeout(function(){
-                        $('body').css('overflow','visible')
-                    },500)
+//                    that.arrow.fadeOut(200);
+//                    setTimeout(function(){
+//                        $('body').css('overflow','visible')
+//                    },500)
 
                 }else{
                     that.downCtx.removeClass('up');
@@ -106,9 +127,9 @@ $(function(){
                     that.circle.fadeIn(200);
                     that.arrow.fadeIn(200);
                     $('body').scrollTop(0);
-                    setTimeout(function(){
-                        $('body').css('overflow','hidden')
-                    },500)
+//                    setTimeout(function(){
+//                        $('body').css('overflow','hidden')
+//                    },500)
                 }
                 that.flag = !that.flag;
 

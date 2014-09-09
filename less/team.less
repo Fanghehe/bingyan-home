@@ -12,15 +12,56 @@ body{
     position: absolute;
     top:0;
     width: 100%;
+    height: 100%;
+  }
+  .team-words-wrap{
+    position: absolute;
+    right:0;
+    top:0;
+    width: 263px;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+  }
+  .team-words{
+    position: absolute;
+    left: 25px;
+    top:25px;
+    width: 220px;
+    height: 450px;
+    background-image: url("../img/team_words.png");
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+  .team-bylogo{
+    position: absolute;
+    width: 34px;
+    height: 42px;
   }
   .item1{
     left: 0;
+    .team-words{
+      background-position: 0 0;
+    }
+    .team-bylogo{
+      right:21px;
+      bottom: 17px;
+    }
   }
   .item2{
     left: 0;
+    .team-words{
+      background-position: -250px 0;
+    }
   }
   .item3{
     left: 0;
+    .team-words{
+      background-position: -500px 0;
+    }
+    .team-bylogo{
+      left:168px;
+      top: 150px;
+    }
   }
   img{
     width: 100%;
@@ -122,6 +163,38 @@ span.line-through{
   -o-animation:slideInRight 1s;
   -webkit-animation:slideInRight 1s;
   animation:slideInRight 1s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.slideOutRight{
+  z-index: 1;
+  -moz-animation:slideOutRight 1s;
+  -ms-animation:slideOutRight 1s;
+  -o-animation:slideOutRight 1s;
+  -webkit-animation:slideOutRight 1s;
+  animation:slideOutRight 1s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@wordsDuration:1s;
+.team-words-wrap.slideInRight{
+  -moz-animation:slideInRight @wordsDuration;
+  -ms-animation:slideInRight @wordsDuration;
+  -o-animation:slideInRight @wordsDuration;
+  -webkit-animation:slideInRight @wordsDuration;
+  animation:slideInRight @wordsDuration;
+}
+.team-words-wrap.slideOutRight{
+  z-index: 1;
+  -moz-animation:slideOutRight @wordsDuration;
+  -ms-animation:slideOutRight @wordsDuration;
+  -o-animation:slideOutRight @wordsDuration;
+  -webkit-animation:slideOutRight @wordsDuration;
+  animation:slideOutRight @wordsDuration;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   -o-animation-fill-mode: forwards;

@@ -72,7 +72,7 @@ div.slide_down{
 }
 img.arrow{
   position: absolute;
-  top:-30px;
+  top:0;
   left: 50%;
   margin-left:-17px;
   cursor: pointer;
@@ -90,40 +90,41 @@ img.arrow.blur{
   transition: opacity 0.1s linear;
 }
 @start_top:-35px;
+@end_top:-25px;
 @-webkit-keyframes blur{
   from{
-    top:@start_top;
+    -webkit-transform:translateY(@start_top)
   }to{
-     top:-25px;
+     -webkit-transform:translateY(@end_top)
    }
 }
 @-moz-keyframes blur{
   from{
-    top:@start_top;
+    -moz-transform:translateY(@start_top)
   }to{
-     top:-25px;
+     -moz-transform:translateY(@end_top)
    }
 }
 @-ms-keyframes blur{
   from{
-    top:@start_top;
+    -ms-transform:translateY(@start_top)
   }to{
-     top:-25px;
+     -ms-transform:translateY(@end_top)
    }
 }
 @-o-keyframes blur{
   from{
-    top:@start_top;
+    -o-transform:translateY(@start_top)
   }to{
-     top:-25px;
+     -o-transform:translateY(@end_top)
    }
 }
 @keyframes blur{
   from{
-    top:@start_top;
+    transform:translateY(@start_top)
   }to{
-     top:-25px;
-   }
+    transform:translateY(@end_top)
+  }
 }
 div.bottom_logo{
   position: absolute;
@@ -179,6 +180,11 @@ div.index_down{
   .down_words{
     display: block;
     .center(50px);
+    width: 915px;
+    font-size:18px;
+    color:#979797;
+    text-indent: 2em;
+    text-align: left;
   }
 }
 #index_wrap{
@@ -188,7 +194,7 @@ div.index_down{
   width:100%;
   background-color:#282828;
   z-index: 99;
-
+  -webkit-transform:translate3d(0,0,0);
 }
 @up_duration:.5s;
 .index_down.up{
@@ -200,38 +206,34 @@ div.index_down{
   -webkit-animation:goToBottom @down_duration ease-out forwards;
   animation:goToBottom @down_duration ease-out forwards;
 }
-@top:180px;
+@top:-450px;
 @-webkit-keyframes goToTop{
-  0%{
-    top: 100%;
-  }
-  100%{
-    top: @top;
-  }
+  from{
+    -webkit-transform:translateY(0)
+  }to{
+     -webkit-transform:translateY(@top)
+   }
  }
 @keyframes goToTop{
-  0%{
-    top: 100%;
-  }
-  100%{
-    top: @top;
-  }
+  from{
+    transform:translateY(0)
+  }to{
+     transform:translateY(@top)
+   }
 }
 @-webkit-keyframes goToBottom{
-  0%{
-    top: @top;
-  }
-  100%{
-    top: 100%;
-  }
+  from{
+    -webkit-transform:translateY(@top)
+  }to{
+     -webkit-transform:translateY(0)
+   }
 }
 @keyframes goToBottom{
-  0%{
-    top: @top;
-  }
-  100%{
-    top: 100%;
-  }
+  from{
+    transform:translateY(@top)
+  }to{
+     transform:translateY(0)
+   }
 }
 div.group_info{
   .center(55px,38px);
@@ -297,9 +299,17 @@ div.input_wrap input,div.input_wrap textarea{
 div.input_wrap input{
   height:30px;
 }
+div.input_wrap input:focus{
+  outline: 1px solid #f9991b;
+  border:1px solid #f9991b;
+}
 div.input_wrap textarea{
   resize: none;
   height: 166px;
+}
+div.input_wrap textarea:focus{
+  outline: 1px solid #f9991b;
+  border:1px solid #f9991b;
 }
 input.info_sub{
   display: block;
@@ -370,40 +380,11 @@ input.info_sub{
     text-align: center;
     font-size: 14px;
     color:#989898;
+    img{
+      vertical-align: middle;
+    }
   }
 }
 @media only screen and (min-height:1200px){
-  @top:400px;
-  @-webkit-keyframes goToTop{
-    0%{
-      top: 100%;
-    }
-    100%{
-      top: @top;
-    }
-  }
-  @keyframes goToTop{
-    0%{
-      top: 100%;
-    }
-    100%{
-      top: @top;
-    }
-  }
-  @-webkit-keyframes goToBottom{
-    0%{
-      top: @top;
-    }
-    100%{
-      top: 100%;
-    }
-  }
-  @keyframes goToBottom{
-    0%{
-      top: @top;
-    }
-    100%{
-      top: 100%;
-    }
-  }
+
 }

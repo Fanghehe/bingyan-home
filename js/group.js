@@ -5,11 +5,7 @@ $(function(){
     var wW = $(window).width();//获取屏幕宽和高
     var wH = $(window).height()-100;
 //    var W_TO_H = 1200/700;
-    $(window).resize(function(){
-        wH = $(window).height()-100;
-        wW = $(window).width();//获取屏幕宽和高
-        bodyBg.resize();
-    });
+
     var BG = function(elem,w,h){//判断屏幕的长宽比缩放背景使撑满屏幕
         this.elem = elem;
         this.w = w;
@@ -37,10 +33,18 @@ $(function(){
             })
         }
     }
-    var bodyBg = new BG($('.group-bg'),1200,720);
+
 
     $('.group-wrap').on('click','.group-item',function(e){
-        $('.group-item').addClass('release').removeClass('active');
-        $(this).addClass('active').removeClass('release');
-    })
+        $('.group-item').addClass('release').removeClass('active').find('.words').fadeOut(500);
+        $(this).addClass('active').removeClass('release').find('.words').fadeIn(500);
+    });
+    window.onload = function(){
+        $(window).resize(function(){
+            wH = $(window).height()-100;
+            wW = $(window).width();//获取屏幕宽和高
+            bodyBg.resize();
+        });
+        var bodyBg = new BG($('.group-bg'),1200,720);
+    }
 })

@@ -29,7 +29,7 @@ li.item5{
   margin-right:0;
   .group_bg(-868px,0);
 }
-div.circle_cover{
+div.circle_cover_black,div.circle_cover,div.circle_cover_cover{
   position: absolute;
   left: 0;
   top: 0;
@@ -40,7 +40,11 @@ div.circle_cover{
   -webkit-border-radius: 108.5px;
   -moz-border-radius: 108.5px;
   border-radius: 108.5px;
-//  background-color: #fff;
+}
+div.circle_cover_black{
+  background-color: #000;
+  opacity:.5;
+  filter:alpha(opacity=50);
 }
 @leave_duration:.15s;
 .circle_cover.leave{
@@ -49,7 +53,6 @@ div.circle_cover{
   -o-animation:leave @leave_duration ease-in forwards;
   -webkit-animation:leave @leave_duration ease-out forwards;
   animation:leave @leave_duration ease-out forwards;
-
 }
 @-webkit-keyframes leave{
   0%{

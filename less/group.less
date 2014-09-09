@@ -3,10 +3,11 @@ div.group-wrap{
   width: 100%;
   height: 100%;
 //  background:url('../img/group_bg.jpg') no-repeat;
-  overflow: hidden;
+//  overflow: hidden;
 }
 .group-item{
   position: absolute;
+  cursor: pointer;
 }
 .person{
   position: absolute;
@@ -14,11 +15,11 @@ div.group-wrap{
   left: 0px;
   background-image: url(../img/group_person.png);
   background-repeat: no-repeat;
+  cursor: pointer;
 }
-@flyTime:1.5s;
+@flyTime:3s;
 .group-item.active{
   .person-cover{
-
     opacity: 0;
     filter:alpha(opacity=0);
   }
@@ -27,11 +28,11 @@ div.group-wrap{
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    -moz-animation:fly @flyTime linear infinite alternate forwards;
-    -ms-animation:fly @flyTime linear infinite alternate forwards;
-    -o-animation:fly @flyTime linear infinite alternate forwards;
-    -webkit-animation:fly @flyTime linear infinite alternate forwards;
-    animation:fly @flyTime linear infinite alternate forwards;
+    -moz-animation:fly @flyTime ease-out infinite alternate forwards;
+    -ms-animation:fly @flyTime ease-out infinite alternate forwards;
+    -o-animation:fly @flyTime ease-out infinite alternate forwards;
+    -webkit-animation:fly @flyTime ease-out infinite alternate forwards;
+    animation:fly @flyTime ease-out infinite alternate forwards;
   }
   .shadow{
     -moz-animation:shrink @flyTime linear infinite alternate forwards;
@@ -39,6 +40,14 @@ div.group-wrap{
     -o-animation:shrink @flyTime linear infinite alternate forwards;
     -webkit-animation:shrink @flyTime linear infinite alternate forwards;
     animation:shrink @flyTime linear infinite alternate forwards;
+  }
+  @upTime:1.5s;
+  .words{
+    -moz-animation:fadeUp @upTime ease-out  forwards;
+    -ms-animation:fadeUp @upTime ease-out  forwards;
+    -o-animation:fadeUp @upTime ease-out  forwards;
+    -webkit-animation:fadeUp @upTime ease-out  forwards;
+    animation:fadeUp @upTime ease-out  forwards;
   }
 }
 
@@ -49,6 +58,34 @@ div.group-wrap{
   }
   
 }
+@-webkit-keyframes fadeUp{
+  from{
+    -webkit-transform:translateY(@start_top)
+  }to{
+     -webkit-transform:translateY(@end_top)
+   }
+}
+@-moz-keyframes fadeUp{
+  from{
+    -moz-transform:translateY(@start_top)
+  }to{
+     -moz-transform:translateY(@end_top)
+   }
+}
+@-ms-keyframes fadeUp{
+  from{
+    -ms-transform:translateY(@start_top)
+  }to{
+     -ms-transform:translateY(@end_top)
+   }
+}
+@keyframes fadeUp{
+  from{
+    transform:translateY(@start_top)
+  }to{
+    transform:translateY(@end_top)
+  }
+}
 @-webkit-keyframes shrink{
   from{
     -webkit-transform:scale(1)
@@ -58,53 +95,53 @@ div.group-wrap{
 }
 @-moz-keyframes shrink{
   from{
-    top:@start_top;
+    -moz-transform:scale(1)
   }to{
-     top:@end_top;
+     -moz-transform:scale(.8)
    }
 }
 @-ms-keyframes shrink{
   from{
-    top:@start_top;
+    -ms-transform:scale(1)
   }to{
-     top:@end_top;
+     -ms-transform:scale(.8)
    }
 }
 @keyframes shrink{
   from{
-    top:@start_top;
+     transform:scale(1)
   }to{
-     top:@end_top;
-   }
+     transform:scale(.8)
+  }
 }
 @start_top:0px;
 @end_top:-25px;
 @-webkit-keyframes fly{
   from{
-    top:@start_top;
+    -webkit-transform:translateY(@start_top)
   }to{
-     top:@end_top;
+     -webkit-transform:translateY(@end_top)
    }
 }
 @-moz-keyframes fly{
   from{
-    top:@start_top;
+    -moz-transform:translateY(@start_top)
   }to{
-     top:@end_top;
+     -moz-transform:translateY(@end_top)
    }
 }
 @-ms-keyframes fly{
   from{
-    top:@start_top;
+    -ms-transform:translateY(@start_top)
   }to{
-     top:@end_top;
+     -ms-transform:translateY(@end_top)
    }
 }
 @keyframes fly{
   from{
-    top:@start_top;
+    transform:translateY(@start_top)
   }to{
-     top:@end_top;
+     transform:translateY(@end_top)
    }
 }
 @opacityTime :.3s;
@@ -130,6 +167,32 @@ div.group-wrap{
   height:256px;
   background-image: url(../img/group_shadow.png);
   background-repeat: no-repeat;
+  cursor: pointer;
+}
+.words{
+  position: absolute;
+  padding:21px 16px;
+  width: 228px;
+  background-color: #000;
+  opacity: .7;
+  filter:alpha(opacity=70);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color:white;
+  z-index:99;
+  display: none;
+  h3{
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  p{
+    font-size: 14px;
+    line-height: 2em;
+  }
+//  background-image: url(../img/group_words.png);
+//  background-repeat: no-repeat;
 }
 .group-mobile {
   left: 15.2%;
@@ -138,7 +201,6 @@ div.group-wrap{
     width: 154px;
     height: 242px;
     background-position: 0 -207px;
-
   }
   .shadow{
     top:52px;
@@ -150,6 +212,10 @@ div.group-wrap{
     -ms-transform-origin: 137px 179px;
     -o-transform-origin: 137px 179px;
     transform-origin: 137px 179px;
+  }
+  .words{
+    left: 129px;
+    top: 0;
   }
 }
 .group-houtai{
@@ -171,6 +237,11 @@ div.group-wrap{
     -o-transform-origin: 119px 148px;
     transform-origin: 119px 148px;
   }
+  .words{
+//    background-position: -260px 0;
+    left: 205px;
+    top: 0;
+  }
 }
 .group-design{
   left: 47.3%;
@@ -191,6 +262,11 @@ div.group-wrap{
     -o-transform-origin: 129px 96px;
     transform-origin: 129px 96px;
   }
+  .words{
+//    background-position: -520px 0;
+    left: 120px;
+    top: 10px;
+  }
 }
 .group-fe{
   left: 67.8%;
@@ -199,11 +275,11 @@ div.group-wrap{
   .person,.person-cover{
     width: 162px;
     height: 364px;
-    background-position: -486px -197px;
+    background-position: -471px -197px;
   }
   .shadow{
     top:68px;
-    left: -8px;
+    left: 13px;
     width: 106px;
     background-position: -497px 0px;
     -webkit-transform-origin: 117px 244px;
@@ -211,6 +287,11 @@ div.group-wrap{
     -ms-transform-origin: 117px 244px;
     -o-transform-origin: 117px 244px;
     transform-origin: 117px 244px;
+  }
+  .words{
+//    background-position: -780px 0;
+    left: 137px;
+    top: 5px;
   }
 }
 .group-product{
@@ -232,5 +313,10 @@ div.group-wrap{
     -ms-transform-origin: 53px 102px;
     -o-transform-origin: 53px 102px;
     transform-origin: 53px 102px;
+  }
+  .words{
+//    background-position: -1040px 0;
+    left: -255px;
+    top: 0;
   }
 }

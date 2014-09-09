@@ -65,7 +65,10 @@ $(function(){
 
 
     var arrowHover = { //优化箭头hover,click的效果
-        wrap : $('.group-item'),
+        //当前wrap
+        wrap : null,
+        //记录上次出现的wrap
+        preWrap : null,
         arrows : $('.arrow'),
         parPos : null,
         items : [],
@@ -83,12 +86,12 @@ $(function(){
             for(var i = 0,l = that.items.length;i<l;i++){
                 that.items[i].unbind();
             }
-            that.items.length = 0;//释放内存
-            that.wrap.each(function(e){
+            that.items.length = 0;//清空数组
+
                 //console.log(($(this).attr('show')));
                 if(!!Number($(this).attr('show'))){
                     var elem = null;
-                    if($(this).find('.item9').length){
+                    if(that.wrap.find('.item9').length){
                         elem = $(this).find('.item9');
                         that.items.push(elem);
                         var pos9 = that.absPos(elem.get(0));
@@ -100,7 +103,7 @@ $(function(){
                             }
                         });
                     }
-                    if($(this).find('.item2').length){
+                    if(that.wrap.find('.item2').length){
                         elem = $(this).find('.item2');
                         that.items.push(elem);
                         var pos11 = that.absPos(elem.get(0));
@@ -111,7 +114,7 @@ $(function(){
                             }
                         });
                     }
-                    if($(this).find('.item11').length){
+                    if(that.wrap.find('.item11').length){
                         elem = $(this).find('.item11');
                         that.items.push(elem);
                         var pos11 = that.absPos(elem.get(0));
@@ -123,8 +126,7 @@ $(function(){
                             }
                         });
                     }
-
-                    if($(this).find('.item8').length){
+                    if(that.wrap.find('.item8').length){
                         elem = $(this).find('.item8');
                         that.items.push(elem);
                         var pos12 = that.absPos(elem.get(0));
@@ -136,16 +138,15 @@ $(function(){
                             }
                         });
                     }
+                    console.log(that.items);
                 }
 
-            });
             for(var i = 0,len =  that.items.length;i<len;i++){
                 that.items[i].bind('mouseleave',function(e){
                     // console.log('leave');
                     that.arrows.css('zIndex',2);
                 });
             }
-
         },
         init : function(){
             var that = this;
@@ -177,7 +178,6 @@ $(function(){
                         $(this).css('zIndex','0');
                     }
                 }
-
             });
         }
     };
@@ -188,8 +188,9 @@ $(function(){
         len : $('.group-item').length,
         index : 0,//从第几张开始
         itemArr : new Array(this.len),//存放所有的item的集合
-        TIME_INTERVAL:50,
+        TIME_INTERVAL:100,
         ANIMATE_TIME_INTERVAL:250,
+        firstClick:true,//判断用户是否连续点击
         setStart : function(){
             var that = this;
             this.sqr.each(function(e){
@@ -200,7 +201,7 @@ $(function(){
                 if(!childLen){
                     $(this).html('暂无照片╮(╯▽╰)╭。。。');
                 }
-            })
+            });
             if(that.index>0){
                 that.arrow.eq(0).html(that.index-1+1999+'届');
             }else{
@@ -209,44 +210,9 @@ $(function(){
             if(that.index<that.len-1){
                 that.arrow.eq(1).html(that.index+1+1999+'届');
             }else{
-                that.arrow.eq(1).html('未完待续');
+                that.arrow.eq(1).html('期待您的加入');
             }
-
         },
-//        addListener : function(){
-//            var that = this;
-//            this.arrow.bind('click',function(e){
-//                if($(this).hasClass('arrow_r')){//右箭头
-//                    if(that.index<that.len-1){//确保不是最后一张
-//                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOU').addClass('FOD');
-//                        setTimeout(function(){
-//                            that.sqr.eq(that.index).attr('show',1).removeClass('FOD').removeClass('FIU').removeClass('FOU').addClass('FID');
-//                            arrowHover.resetSqr();
-//                        },300);
-//                        that.index++;
-//                    }
-//                }else if($(this).hasClass('arrow_l')){//左箭头
-//                    if(that.index>0){//确保不是第一张
-//                        that.sqr.eq(that.index).attr('show',0).removeClass('FID').removeClass('FIU').removeClass('FOD').addClass('FOU');
-//                        setTimeout(function(){
-//                            that.sqr.eq(that.index).attr('show',1).removeClass('FID').removeClass('FOU').removeClass('FOD').addClass('FIU');
-//                            arrowHover.resetSqr();
-//                        },300);
-//                        that.index--;
-//                    }
-//                }
-//                if(that.index>0){
-//                    that.arrow.eq(0).html(that.index-1+1999+'届');
-//                }else{
-//                    that.arrow.eq(0).html('破蛋而出');
-//                }
-//                if(that.index<that.len-1){
-//                    that.arrow.eq(1).html(that.index+1+1999+'届');
-//                }else{
-//                    that.arrow.eq(1).html('未完待续');
-//                }
-//            })
-//        },
         setAngle:function(){
             var self = this;
             this.sqr.each(function(){
@@ -311,11 +277,11 @@ $(function(){
                     if(!!callFunc){
                         callFunc()
                     }
-
                 },self.ANIMATE_TIME_INTERVAL)
             };
             setTimeout(function(){
-                self.sqr.eq(self.index).attr('show',1)
+                self.sqr.eq(self.index).attr('show',1);
+                arrowHover.wrap = self.sqr.eq(self.index);
                 moveRight(4);
             },0);
             setTimeout(function(){
@@ -328,8 +294,11 @@ $(function(){
                 moveRight(1);
             },3*self.TIME_INTERVAL);
             setTimeout(function(){
-                moveRight(0,function(){self.sqr.eq(self.index-1).attr('show',0).hide()});
-                self.sqr.eq(self.index).css('z-index',1)
+                moveRight(0,function(){
+                    self.sqr.eq(self.index-1).attr('show',0).hide();
+                    self.firstClick = true;
+                });
+                self.sqr.eq(self.index).css('z-index',1);
                 arrowHover.resetSqr();
             },4*self.TIME_INTERVAL);
         },
@@ -358,7 +327,8 @@ $(function(){
                 },self.ANIMATE_TIME_INTERVAL)
             };
             setTimeout(function(){
-                self.sqr.eq(self.index).attr('show',1)
+                self.sqr.eq(self.index).attr('show',1);
+                arrowHover.wrap = self.sqr.eq(self.index);
                 moveRight(0);
             },0);
             setTimeout(function(){
@@ -371,31 +341,65 @@ $(function(){
                 moveRight(3);
             },3*self.TIME_INTERVAL);
             setTimeout(function(){
-                moveRight(4,function(){self.sqr.eq(self.index+1).attr('show',0).hide()});
+                moveRight(4,function(){
+                    self.sqr.eq(self.index+1).attr('show',0).hide();
+                    self.firstClick = true;
+                });
                 arrowHover.resetSqr();
+
             },4*self.TIME_INTERVAL);
         },
         addListener : function(){
             var that = this;
+            var clickInterval = null;
             this.arrow.bind('click',function(e){
-                if($(this).hasClass('arrow_r')){//右箭头
-                    if(that.index<that.len-1){//确保不是最后一张
-                        that.goRight();
+                clearTimeout(clickInterval);
+                var self = this;
+                console.log(that.firstClick);
+                if(that.firstClick){
+                    if($(self).hasClass('arrow_r')){//右箭头
+                        if(that.index<that.len-1){//确保不是最后一张
+                            that.goRight();
+                        }
+                    }else if($(self).hasClass('arrow_l')){//左箭头
+                        if(that.index>0){//确保不是第一张
+                            that.goLeft();
+                        }
                     }
-                }else if($(this).hasClass('arrow_l')){//左箭头
-                    if(that.index>0){//确保不是第一张
-                        that.goLeft();
+                    if(that.index>0){
+                        that.arrow.eq(0).html(that.index-1+1999+'届');
+                    }else{
+                        that.arrow.eq(0).html('破蛋而出');
                     }
-                }
-                if(that.index>0){
-                    that.arrow.eq(0).html(that.index-1+1999+'届');
+                    if(that.index<that.len-1){
+                        that.arrow.eq(1).html(that.index+1+1999+'届');
+                    }else{
+                        that.arrow.eq(1).html('期待你的加入');
+                    }
+                    that.firstClick = false;
+                    return
                 }else{
-                    that.arrow.eq(0).html('破蛋而出');
-                }
-                if(that.index<that.len-1){
-                    that.arrow.eq(1).html(that.index+1+1999+'届');
-                }else{
-                    that.arrow.eq(1).html('未完待续');
+                    clickInterval = setTimeout(function(e){
+                        if($(self).hasClass('arrow_r')){//右箭头
+                            if(that.index<that.len-1){//确保不是最后一张
+                                that.goRight();
+                            }
+                        }else if($(self).hasClass('arrow_l')){//左箭头
+                            if(that.index>0){//确保不是第一张
+                                that.goLeft();
+                            }
+                        }
+                        if(that.index>0){
+                            that.arrow.eq(0).html(that.index-1+1999+'届');
+                        }else{
+                            that.arrow.eq(0).html('破蛋而出');
+                        }
+                        if(that.index<that.len-1){
+                            that.arrow.eq(1).html(that.index+1+1999+'届');
+                        }else{
+                            that.arrow.eq(1).html('期待你的加入');
+                        }
+                    },that.ANIMATE_TIME_INTERVAL*4);
                 }
             })
         },

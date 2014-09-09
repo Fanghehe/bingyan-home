@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="LessManager">
-    <option name="lessProfileMap">
+    <option name="lessProfiles">
       <map>
-        <entry key="0">
+        <entry key="index">
           <value>
             <LessProfile>
+              <option name="compressOutput" value="true" />
               <option name="cssDirectories">
                 <list>
                   <CssDirectory>
-                    <option name="path" value="$PROJECT_DIR$/css" />
+                    <option name="path" value="G:\fe\project\bingyan-home\css" />
                   </CssDirectory>
                 </list>
               </option>
-              <option name="id" value="0" />
-              <option name="includePattern" value="index-style.less;works-style.less;partner-style.less;group-style.less" />
-              <option name="lessDirPath" value="$PROJECT_DIR$/less" />
+              <option name="includePattern" value="group-style.less;index-style.less;team-style.less;works-style.less;partner-style.less;" />
+              <option name="lessDirPath" value="G:\fe\project\bingyan-home\less" />
               <option name="name" value="home" />
             </LessProfile>
           </value>
